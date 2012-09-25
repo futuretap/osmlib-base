@@ -1,10 +1,8 @@
 # Namespace for modules and classes related to the OpenStreetMap project.
 module OSM
-  
-  @@XMLPARSER = ENV['OSMLIB_XML_PARSER'] || 'REXML'
-  
+
   def self.XMLParser
-    @@XMLPARSER
+    ENV['OSMLIB_XML_PARSER'] || 'REXML'
   end
   
   if OSM.XMLParser == 'REXML'
