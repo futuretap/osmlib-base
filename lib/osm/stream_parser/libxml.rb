@@ -31,8 +31,7 @@ module OSM
     def initialize(options)
       super(options)
 
-      @parser = XML::SaxParser.new
-      if @filename.nil?
+      @parser = if @filename.nil?
         @parser = XML::SaxParser.string(@string)
       else
         @parser = XML::SaxParser.file(@filename)
