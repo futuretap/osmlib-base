@@ -1,21 +1,21 @@
 # Namespace for modules and classes related to the OpenStreetMap project.
 module OSM
 
-  def self.XMLParser
+  def self.xml_parser
     ENV['OSMLIB_XML_PARSER'] || 'REXML'
   end
   
-  if OSM.XMLParser == 'REXML'
+  if OSM.xml_parser == 'REXML'
     require 'rexml/parsers/sax2parser'
     require 'rexml/sax2listener'
-  elsif OSM.XMLParser == 'Libxml'
+  elsif OSM.xml_parser == 'Libxml'
     require 'rubygems'
     begin
       require 'xml/libxml'
     rescue LoadError
       require 'libxml'
     end
-  elsif OSM.XMLParser == 'Expat'
+  elsif OSM.xml_parser == 'Expat'
     require 'rubygems'
     require 'xmlparser'
   end
@@ -48,7 +48,7 @@ module OSM
   #
   class Callbacks
     
-    case OSM.XMLParser
+    case OSM.xml_parser
     when 'REXML' then include REXML::SAX2Listener
     when 'Libxml' then include XML::SaxParser::Callbacks
     when 'Expat' then
@@ -325,13 +325,13 @@ module OSM
     #
     # You can only use :filename or :string, not both.
     def self.new(options)
-      eval "OSM::StreamParser::#{OSM.XMLParser}.new(options)"
+      eval "OSM::StreamParser::#{OSM.xml_parser}.new(options)"
     end
     
   end
   
 end
 
-require File.join( File.dirname(__FILE__), 'stream_parser', OSM.XMLParser.downcase )
+require File.join( File.dirname(__FILE__), 'stream_parser', OSM.xml_parser.downcase )
 
   
