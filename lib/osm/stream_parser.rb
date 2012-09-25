@@ -161,7 +161,7 @@ module OSM
     end
     
     def _nd(attr_hash)
-      @context.nodes << attr_hash['ref']
+      @context.nodes << attr_hash['ref'].to_i
     end
     
     def _tag(attr_hash)
