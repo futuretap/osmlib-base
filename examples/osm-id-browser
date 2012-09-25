@@ -30,7 +30,7 @@ require 'rubygems'
 require 'webrick'
 require 'pathname'
 require 'builder'
-require 'OSM/API'
+require 'osm/API'
 
 PORT = 8008
 CSS = DATA.read

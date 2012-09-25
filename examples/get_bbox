@@ -26,8 +26,8 @@
 #-----------------------------------------------------------------------------
 
 $: << 'lib' << '../lib'
-require 'OSM/API'
-require 'OSM/Database'
+require 'osm/API'
+require 'osm/Database'
 
 if ARGV.size != 4
     STDERR.puts "Usage: get_bbox <left> <bottom> <right> <top>"

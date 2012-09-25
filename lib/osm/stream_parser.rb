@@ -1,6 +1,3 @@
-require 'OSM/objects'
-require 'OSM/Database'
-
 # Namespace for modules and classes related to the OpenStreetMap project.
 module OSM
   
@@ -310,7 +307,7 @@ module OSM
   #
   # Usage:
   #   ENV['OSMLIB_XML_PARSER'] = 'Libxml'
-  #   require 'OSM/StreamParser'
+  #   require 'osm/StreamParser'
   #   parser = OSM::Streamparser.new(:filename => 'file.osm')
   #   result = parser.parse
   #

@@ -43,7 +43,7 @@ OSM database: OSM::Node, OSM::Way, and OSM::Relation. They are all subclasses
 of OSM::OSMObject.
 
   # support for basic OSM objects
-  require 'OSM/objects'
+  require 'osm/objects'
 
   # create a node
   node = OSM::Node.new(17, 'user', '2007-10-31T23:48:54Z', 7.4, 53.2)
@@ -134,7 +134,7 @@ define the methods node(), way(), and relation() in it:
 
 Instantiate an object of this class and give it to a OSM::StreamParser:
 
-  require 'OSM/StreamParser'
+  require 'osm/StreamParser'
 
   cb = MyCallbacks.new
   parser = OSM::StreamParser.new(:filename => 'filename.osm', :callbacks => cb)
@@ -155,21 +155,21 @@ There are several parser options available:
 Since version 0.1.3 REXML is the default parser because many people
 had problems with the C-based parser. Change the parser by setting
 the environment variable OSMLIB_XML_PARSER to the parser you want
-to use (before you require 'OSM/StreamParser'):
+to use (before you require 'osm/StreamParser'):
 
 From the shell:
     export OSMLIB_XML_PARSER=Libxml
 
 From ruby:
     ENV['OSMLIB_XML_PARSER']='Libxml'
-    require 'OSM/StreamParser'
+    require 'osm/StreamParser'
 
 === Using a Database
 
 If you want the parser to keep track of all the objects it finds in
 the XML file you can create a OSM::Database for it:
 
-  require 'OSM/Database'
+  require 'osm/Database'
 
   db = OSM::Database.new
 

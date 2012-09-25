@@ -1,7 +1,5 @@
 # Contains the OSM::Database class.
 
-require 'OSM/objects.rb'
-
 module OSM
 
     # An OSM database. It holds nodes, ways, and relations in memory.
@@ -12,7 +10,7 @@ module OSM
     # and the new one will be added.
     #
     # Usage:
-    #   require 'OSM/Database'
+    #   require 'osm/Database'
     #   db = OSM::Database.new
     #
     class Database
