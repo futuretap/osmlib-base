@@ -334,6 +334,6 @@ module OSM
   
 end
 
-require "OSM/StreamParser/#{OSM.XMLParser}"
+require File.join( File.dirname(__FILE__), 'stream_parser', OSM.XMLParser.downcase )
 
   
