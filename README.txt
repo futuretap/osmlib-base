@@ -24,7 +24,7 @@ be found at http://www.openstreetmap.org/ .
 
 == Dependencies
 
-* georuby (gem install GeoRuby)
+* RGeo (gem install rgeo)
 * libxml-ruby (optional C-based XML parser, needs reasonably new version)
   (Debian/Ubuntu: libxml-ruby1.8)
 * xmlparser (optional C-based XML parser) (Debian/Ubuntu: libxml-parser-ruby1.8)
