@@ -1,26 +1,21 @@
-require 'OSM/objects'
-require 'OSM/Database'
-
 # Namespace for modules and classes related to the OpenStreetMap project.
 module OSM
-  
-  @@XMLPARSER = ENV['OSMLIB_XML_PARSER'] || 'REXML'
-  
-  def self.XMLParser
-    @@XMLPARSER
+
+  def self.xml_parser
+    ENV['OSMLIB_XML_PARSER'] || 'REXML'
   end
   
-  if OSM.XMLParser == 'REXML'
+  if OSM.xml_parser == 'REXML'
     require 'rexml/parsers/sax2parser'
     require 'rexml/sax2listener'
-  elsif OSM.XMLParser == 'Libxml'
+  elsif OSM.xml_parser == 'Libxml'
     require 'rubygems'
     begin
       require 'xml/libxml'
     rescue LoadError
       require 'libxml'
     end
-  elsif OSM.XMLParser == 'Expat'
+  elsif OSM.xml_parser == 'Expat'
     require 'rubygems'
     require 'xmlparser'
   end
@@ -53,7 +48,7 @@ module OSM
   #
   class Callbacks
     
-    case OSM.XMLParser
+    case OSM.xml_parser
     when 'REXML' then include REXML::SAX2Listener
     when 'Libxml' then include XML::SaxParser::Callbacks
     when 'Expat' then
@@ -166,7 +161,7 @@ module OSM
     end
     
     def _nd(attr_hash)
-      @context.nodes << attr_hash['ref']
+      @context.nodes << attr_hash['ref'].to_i
     end
     
     def _tag(attr_hash)
@@ -310,7 +305,7 @@ module OSM
   #
   # Usage:
   #   ENV['OSMLIB_XML_PARSER'] = 'Libxml'
-  #   require 'OSM/StreamParser'
+  #   require 'osm/StreamParser'
   #   parser = OSM::Streamparser.new(:filename => 'file.osm')
   #   result = parser.parse
   #
@@ -330,13 +325,13 @@ module OSM
     #
     # You can only use :filename or :string, not both.
     def self.new(options)
-      eval "OSM::StreamParser::#{OSM.XMLParser}.new(options)"
+      eval "OSM::StreamParser::#{OSM.xml_parser}.new(options)"
     end
     
   end
   
 end
 
-require "OSM/StreamParser/#{OSM.XMLParser}"
+require File.join( File.dirname(__FILE__), 'stream_parser', OSM.xml_parser.downcase )
 
   

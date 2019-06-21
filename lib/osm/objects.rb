@@ -114,7 +114,7 @@ module OSM
     
     # Get tag value
     def [](key)
-      tags[key]
+      tags[key.to_s]
     end
     
     # Set tag

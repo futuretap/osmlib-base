@@ -37,8 +37,8 @@ require 'builder'
 require 'rexml/document'
 
 $: << 'lib' << '../lib'
-require 'OSM/objects'
-require 'OSM/Database'
+require 'osm/objects'
+require 'osm/Database'
 
 db = OSM::Database.new
 

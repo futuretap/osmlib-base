@@ -1,9 +1,6 @@
 # Contains the OSM::API class
 
 require 'net/http'
-require 'OSM'
-require 'OSM/objects'
-require "OSM/StreamParser"
 
 module OSM
 
@@ -34,7 +31,7 @@ module OSM
   # The OSM::API class handles all calls to the OpenStreetMap API.
   #
   # Usage:
-  # require 'OSM/API'
+  #   require 'osm/API'
   #
   # @api = OSM::API.new
   # node = @api.get_node(3437)
