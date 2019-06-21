@@ -468,7 +468,7 @@ module OSM
     def linestring(factory = default_rgeo_factory)
       raise OSM::GeometryError.new("way with less then two nodes can't be turned into a linestring") if nodes.size < 2
       raise OSM::NoDatabaseError.new("can't create LineString from way if the way is not in a OSM::Database") if @db.nil? && !@node_objects
-      factory.line_string(node_objects.map{|node| factory.point(node.lat, node.lon)})
+      factory.line_string(node_objects.map{|node| factory.point(node.lon, node.lat)})
     end
     
     # Create object of class RGeo::Feature::Polygon with
@@ -499,6 +499,19 @@ module OSM
     #
     def geometry
       linestring
+    end
+    
+    def centroid
+      return @centroid if @centroid
+      @centroid = polygon.centroid
+    end
+    
+    def lat
+      centroid.lat
+    end
+    
+    def lon
+      centroid.lon
     end
     
     # Return string version of this Way object.
