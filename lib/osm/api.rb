@@ -57,7 +57,7 @@ module OSM
     #
     def get_object(type, id)
       raise ArgumentError.new("type needs to be one of 'node', 'way', and 'relation'") unless type =~ /^(node|way|relation)$/
-      raise TypeError.new('id needs to be a positive integer') unless(id.kind_of?(Fixnum) && id > 0)
+      raise TypeError.new('id needs to be a positive integer') unless(id.kind_of?(Integer) && id > 0)
       response = type == 'way' ? get("#{type}/#{id}/full") : get("#{type}/#{id}")
       check_response_codes(response)
       parser = OSM::StreamParser.new(:string => response.body, :callbacks => OSM::ObjectListCallbacks.new)
