@@ -1,7 +1,6 @@
 # -*- encoding: utf-8 -*-
 
-$:.push File.expand_path("../lib", __FILE__)
-require "osm"
+require File.join(__dir__, "lib", "osm", "version")
 
 Gem::Specification.new do |s|
   s.name = 'osmlib-base'
@@ -18,5 +17,6 @@ Gem::Specification.new do |s|
   s.test_files = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.add_dependency('rgeo')
+  s.add_runtime_dependency 'rexml', ['~> 3.2', '>= 3.2.5']
+  s.add_runtime_dependency 'rgeo'
 end

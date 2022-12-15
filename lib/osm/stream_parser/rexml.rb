@@ -1,5 +1,6 @@
 # Contains the OSM::StreamParser::REXML class.
 
+require 'rubygems'
 require 'rexml/parsers/sax2parser'
 require 'rexml/sax2listener'
 

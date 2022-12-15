@@ -6,6 +6,7 @@ module OSM
   end
   
   if OSM.xml_parser == 'REXML'
+    require 'rubygems'
     require 'rexml/parsers/sax2parser'
     require 'rexml/sax2listener'
   elsif OSM.xml_parser == 'Libxml'
